@@ -1,3 +1,6 @@
 <?php
 
-var_dump($_GET);
+include_once '../app/bootstrap.php';
+
+// Init core library
+$init = new Core();
