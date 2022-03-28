@@ -1,20 +1,26 @@
 <?php
 
+/* 
+ * App Core Class
+ * Creare URL & Load Core Controller
+ * URL Format - Controller/Method/Param
+ */
+
 class Core
 {
     protected $currentController = 'Pages';
-    protected $currentMethods = 'index';
+    protected $currentMethod = 'index';
     protected $Params = [];
 
     public function __construct()
     {
         $url = $this->getUrl();
 
-        // Lock in controllers for first value
+        // Look in controllers for first value
         if ($url && file_exists('../app/controllers/' . ucwords($url['0']) . '.php')) {
-            // if exists set as controller
+            // If exists set as controller
             $this->currentController = ucwords($url['0']);
-            // unset 0 index
+            // Unset 0 index
             unset($url['0']);
         }
 
@@ -23,6 +29,21 @@ class Core
 
         // Init the controller
         $this->currentController = new $this->currentController;
+
+        // Check for secound of url
+        if (isset($url['1'])) {
+            // Check to see if method exists in the controller
+            if (method_exists($this->currentController, $url['1'])) {
+                // If exists set as method
+                $this->currentMethod = $url['1'];
+                // Unset 0 index
+                unset($url['1']);
+            }
+        }
+        // Get params
+        $this->params = $url ? array_values($url) : [];
+        // Call e callback with array of params
+        call_user_func_array([$this->currentController, $this->currentMethod], $this->params);
     }
 
     public function getUrl()
