@@ -1,6 +1,6 @@
 <?php
 
-class Pages
+class Pages extends Controller
 {
     public function __construct()
     {
@@ -8,5 +8,15 @@ class Pages
     }
     public function index()
     {
+        // $articles = $this->model();
+        $data = [
+            'title' => 'WebProgMVC',
+            // 'article' => $articles
+        ];
+        $this->view('pages/index', $data);
+    }
+    public function about()
+    {
+        $this->view('pages/about');
     }
 }
