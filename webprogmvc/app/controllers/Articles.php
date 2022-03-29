@@ -1,6 +1,6 @@
 <?php
 
-class Articles
+class Articles extends Controller
 {
     public function __construct()
     {
@@ -8,6 +8,8 @@ class Articles
     }
     public function index()
     {
+        // $this->model('article');
+        $this->view('article');
     }
     public function edit($id)
     {
