@@ -21,7 +21,7 @@ class Database
     public function __construct()
     {
         // SET DNS 
-        $dns = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . 'charset=utf8';
+        $dns = 'mysql:host=' . $this->host . ';dbname=' . $this->dbname . ';charset=utf8';
         // Create PDO instance
         try {
             $this->dbh = new PDO($dns, $this->user, $this->pass);

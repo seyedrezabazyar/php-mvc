@@ -10,7 +10,7 @@ class Controller
     public function model($model)
     {
         // Require the model file
-        require_once '../app/modesl/' . $model . '.php';
+        require_once '../app/models/' . $model . '.php';
         // Init model file
         return new $model;
     }
