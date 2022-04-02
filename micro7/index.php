@@ -1,7 +1,7 @@
 <?php
 # front controller
-require 'vendor/autoload.php';
+include 'bootstrap/init.php';
 
-// echo $_SERVER['REQUEST_URI'];
-
-new App\Core\Request();
+// print_r($_ENV);
+// var_dump($_ENV);
+// echo $_ENV['DB_NAME'];
