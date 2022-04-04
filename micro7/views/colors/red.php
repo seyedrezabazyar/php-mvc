@@ -13,3 +13,8 @@
 </body>
 
 </html>
+
+<?php
+// $request = new \App\Core\Request();
+// $request->redirect('colors/blue');
+?>
