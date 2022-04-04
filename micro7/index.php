@@ -1,24 +1,19 @@
 <?php
 # front controller
 
-// use App\Utilities\Asset;
-
-// use App\Utilities\Url;
-
-// use App\Utilities\Currency;
-
-use App\Utilities\Lang;
+use App\Utilities\Url;
 
 include 'bootstrap/init.php';
 
-// echo Asset::css('style.css');
-// echo Asset::js('script.js');
+$route = Url::current_route();
 
-// echo Url::current();
+# $route = /colors/red && /colors/green && /colors/blue
 
-// echo Currency::format_price_in_hezar_toman(12000);
-// echo Currency::format_price_in_rial(12000);
+if ($route == '/github/php-mvc/micro7/colors/red')
+    include BASEPATH . 'views/colors/red.php';
 
-$text = "این متن در 15 فروردین سال 1401 نوشته شده است";
-echo Lang::persian_numbers($text);
-// echo $text;
+if ($route == '/github/php-mvc/micro7/colors/green')
+    include BASEPATH . 'views/colors/green.php';
+
+if ($route == '/github/php-mvc/micro7/colors/blue')
+    include BASEPATH . 'views/colors/blue.php';
