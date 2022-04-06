@@ -11,6 +11,7 @@ class StupidRouter
     {
         # $route = /colors/red && /colors/green && /colors/blue
         $this->routes = [
+            '/github/php-mvc/micro7/' => 'home/index.php',
             '/github/php-mvc/micro7/colors/red' => 'colors/red.php',
             '/github/php-mvc/micro7/colors/green' => 'colors/green.php',
             '/github/php-mvc/micro7/colors/blue' => 'colors/blue.php'
