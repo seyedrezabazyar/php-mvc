@@ -2,17 +2,16 @@
 
 use App\Core\Routing\Route;
 
-// Route::add('get', '/null');
 Route::get('/null');
 
-Route::add(['get', 'post'], '/', function () {
+Route::add(['get', 'post'], '/github/php-mvc/micro7/a', function () {
     echo 'Welcome';
 });
 
-Route::post('/saveForm', function () {
+Route::post('/github/php-mvc/micro7/b', function () {
     echo 'Save OK';
 });
 
-Route::put('/pururi', ['Controller', 'Method']);
+Route::put('/github/php-mvc/micro7/c', ['Controller', 'Method']);
 
-Route::get('/pururi', 'Controller@Method');
+Route::get('/github/php-mvc/micro7/d', 'Controller@Method');
