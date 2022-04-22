@@ -9,4 +9,16 @@ class ArchiveController
         # model ...
         view("archive.index");
     }
+
+    public function products()
+    {
+        # model ...
+        view("archive.products");
+    }
+
+    public function articles()
+    {
+        # model ...
+        view("archive.articles");
+    }
 }
