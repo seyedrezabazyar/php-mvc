@@ -2,16 +2,18 @@
 
 use App\Core\Routing\Route;
 
-Route::get('/null');
+Route::get('/', 'HomeController@index');
+Route::get('/archive', 'ArchiveController@index');
 
-Route::add(['get', 'post'], '/github/php-mvc/micro7/a', function () {
+
+Route::add(['get', 'post', 'put'], '/a', function () {
     echo 'Welcome';
 });
 
-Route::post('/github/php-mvc/micro7/b', function () {
+Route::get('/b', function () {
     echo 'Save OK';
 });
 
-Route::put('/github/php-mvc/micro7/c', ['Controller', 'Method']);
+Route::put('/c', ['Controller', 'Method']);
 
-Route::get('/github/php-mvc/micro7/d', 'Controller@Method');
+Route::get('/d', 'Controller@Method');

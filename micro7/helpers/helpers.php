@@ -10,8 +10,9 @@ function asset_url($route)
     return site_url('assets/' . $route);
 }
 
-function random_element($arr)
+function view($path) #errors.404
 {
-    shuffle($arr);
-    return array_pop($arr);
+    $path = str_replace('.', '/', $path);
+    $view_full_path = BASEPATH . "views/$path.php";
+    include_once $view_full_path;
 }

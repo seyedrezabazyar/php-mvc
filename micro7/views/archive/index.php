@@ -9,9 +9,7 @@
 </head>
 
 <body style="background: #f1f1f1">
-    <h2 style="margin:100px;text-align:center">
-        404<br>
-        Page Not Found!</h2>
+    <h2 style="margin:100px;text-align:center">Archive Page</h2>
 </body>
 
 </html>
