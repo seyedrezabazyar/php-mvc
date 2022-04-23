@@ -45,6 +45,10 @@ class Router
         // }
 
         # 404 : uri not exist
+
+        // var_dump($this->routes);
+        // die();
+
         if (is_null($this->current_route)) {
             $this->dispatch404();
         }
