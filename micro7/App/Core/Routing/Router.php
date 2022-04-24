@@ -18,6 +18,19 @@ class Router
         $this->request = new Request;
         $this->routes = Route::routes();
         $this->current_route = $this->findRoute($this->request) ?? null;
+
+        # run middleware here
+        $this->run_route_middleware();
+    }
+
+    private function run_route_middleware()
+    {
+        // var_dump($this->current_route['middleware']);
+        $middleware = $this->current_route['middleware'];
+        foreach ($middleware as $middleware_class) {
+            $middleware_obj = new $middleware_class;
+            $middleware_obj->handle();
+        }
     }
 
     public function findRoute(request $request)
@@ -45,10 +58,6 @@ class Router
         // }
 
         # 404 : uri not exist
-
-        // var_dump($this->routes);
-        // die();
-
         if (is_null($this->current_route)) {
             $this->dispatch404();
         }

@@ -5,12 +5,12 @@ namespace App\Middleware;
 use hisorange\BrowserDetect\Parser as Browser;
 use App\Middleware\Contract\MiddlewareInterface;
 
-class BlockFirefox implements MiddlewareInterface
+class BlockChrome implements MiddlewareInterface
 {
     public function handle()
     {
-        if (Browser::isFirefox()) {
-            die("Firefox was blocked!");
+        if (Browser::isChrome()) {
+            die("Chrome was blocked!");
         }
     }
 }
