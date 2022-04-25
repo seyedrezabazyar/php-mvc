@@ -12,9 +12,6 @@ class TodoController
             'title' => 'لیست تسک ها'
         ];
 
-        // extract($data);
-        // var_dump($tasks);
-
         view('todo.list', $data);
     }
 }
