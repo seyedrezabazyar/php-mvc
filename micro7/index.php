@@ -1,26 +1,22 @@
 <?php
 # front controller
-
 include 'bootstrap/init.php';
 
-// var_dump(\App\Core\Routing\Route::Routes());
+$router = new App\Core\Routing\Router();
+$router->run();
 
-// $router = new App\Core\Routing\Router();
-// $router->run();
+// $route_pattern = '/^\/post\/(?<slug>[-%\w]+)$/';
+$route = '/post/{slug}/comment/{cid}';
+$pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[-%\w]+)'], $route) . "$/";
 
+nice_dump($route);
+nice_dump($pattern);
+nice_dump('/^\/post\/(?<slug>[-%\w]+)$/');
 
-// $route = '/post/{slug}';
-$route_pattern = '/^\/post\/(?<slug>[-%\w]+)$/';
-$uri1 = '/post/what-is-php';
-$uri2 = '/post/what-is-laravel';
-$uri3 = '/product/what-is-php';
+// $uri1 = '/post/what-is-php';
+// $uri2 = '/post/what-is-laravel';
+// $uri3 = '/product/what-is-php';
 
-// $result = preg_match($route_pattern, $uri1);
+// $result = preg_match($route_pattern, $uri1, $matches);
 // nice_dump($result);
-
-// $result = preg_match($route_pattern, $uri3);
-// nice_dump($result);
-
-$result = preg_match($route_pattern, $uri1, $matches);
-nice_dump($result);
-nice_dump($matches);
+// nice_dump($matches);
