@@ -36,11 +36,38 @@ class Router
     public function findRoute(request $request)
     {
         foreach ($this->routes as $route) {
-            if (in_array($request->method(), $route['methods']) && $request->uri() == $route['uri']) {
+            if (!in_array($request->method(), $route['methods'])) {
+                return false;
+            }
+            if ($this->regex_matched($route)) {
                 return $route;
             }
         }
         return null;
+    }
+
+    public function regex_matched($route)
+    {
+        global $request;
+        $pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[-%\w]+)'], $route['uri']) . "$/";
+        $result = preg_match($pattern, $this->request->uri(), $matches);
+        if (!$result) {
+            // nice_dump($route);
+            // nice_dump('Not Matched!');
+            return false;
+        }
+        // nice_dump($route);
+        // nice_dump('OK');
+
+        // nice_dump($matches);
+
+        foreach ($matches as $key => $value) {
+            if (!is_int($key)) {
+                $request->add_route_param($key, $value);
+                // echo "$key => $value";
+            }
+        }
+        return true;
     }
 
     public function dispatch404()

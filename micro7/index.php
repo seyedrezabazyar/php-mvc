@@ -6,12 +6,13 @@ $router = new App\Core\Routing\Router();
 $router->run();
 
 // $route_pattern = '/^\/post\/(?<slug>[-%\w]+)$/';
-$route = '/post/{slug}/comment/{cid}';
-$pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[-%\w]+)'], $route) . "$/";
+// $route = '/post/{slug}';
 
-nice_dump($route);
-nice_dump($pattern);
-nice_dump('/^\/post\/(?<slug>[-%\w]+)$/');
+// $pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[-%\w]+)'], $route) . "$/";
+
+// nice_dump($route);
+// nice_dump($pattern);
+// nice_dump('/^\/post\/(?<slug>[-%\w]+)$/');
 
 // $uri1 = '/post/what-is-php';
 // $uri2 = '/post/what-is-laravel';
