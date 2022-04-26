@@ -5,7 +5,7 @@ use App\Middleware\BlockChrome;
 use App\Middleware\BlockFirefox;
 use App\Middleware\BlockIE;
 
-Route::get('/panel', 'PanelController@index', [Author::Class]); //////
+Route::get('/panel', 'PanelController@index', [Author::Class]);
 
 Route::get('/', 'HomeController@index');
 
