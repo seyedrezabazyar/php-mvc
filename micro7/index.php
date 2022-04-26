@@ -1,23 +1,17 @@
 <?php
 # front controller
+
+use App\Models\User;
+
 include 'bootstrap/init.php';
 
-$router = new App\Core\Routing\Router();
-$router->run();
+$user_data = [
+    'id' => rand(5, 1000),
+    'name' => 'mohammad'
+];
 
-// $route_pattern = '/^\/post\/(?<slug>[-%\w]+)$/';
-// $route = '/post/{slug}';
+$user_model = new User();
+$user_model->create($user_data);
 
-// $pattern = "/^" . str_replace(['/', '{', '}'], ['\/', '(?<', '>[-%\w]+)'], $route) . "$/";
-
-// nice_dump($route);
-// nice_dump($pattern);
-// nice_dump('/^\/post\/(?<slug>[-%\w]+)$/');
-
-// $uri1 = '/post/what-is-php';
-// $uri2 = '/post/what-is-laravel';
-// $uri3 = '/product/what-is-php';
-
-// $result = preg_match($route_pattern, $uri1, $matches);
-// nice_dump($result);
-// nice_dump($matches);
+// $router = new App\Core\Routing\Router();
+// $router->run();

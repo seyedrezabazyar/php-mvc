@@ -15,9 +15,6 @@ abstract class BaseModel implements CrudInterface
         # if mysql => set mysql connection
     }
 
-    // $user = new UserModel()->find(5);
-    // $user->getAttribute('name');
-
     protected function getAttribute($key)
     {
         if (!$key || !array_key_exists($key, $this->attributes)) {
