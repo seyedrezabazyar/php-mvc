@@ -19,15 +19,16 @@ include 'bootstrap/init.php';
 // $user = $user_model->getAll();
 // var_dump($user);
 
-$productModel = new Product();
-
+// $productModel = new Product();
 // for ($i = 1; $i <= 20; $i++) {
 //     $productModel->create([
 //         'id' => $i,
 //         'title' => "Product-$i"
 //     ]);
 // }
-var_dump($productModel->getAll());
+// var_dump($productModel->getAll());
+
+// var_dump($_ENV['DB_NAME']);
 
 // $router = new App\Core\Routing\Router();
 // $router->run();
