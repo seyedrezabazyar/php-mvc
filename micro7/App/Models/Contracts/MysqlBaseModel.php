@@ -58,28 +58,43 @@ class MysqlBaseModel extends BaseModel
     # Read (select) single | multiple
     public function find($id): object
     {
-        return (object)null;
+        $record = $this->connection->get($this->table, '*', [$this->primaryKey => $id]);
+        return (object)$record;
     }
 
     public function getAll(): array
     {
-        return [];
+        return $this->connection->select($this->table, '*');
     }
 
     public function get(array $columns, array $where): array
     {
-        return [];
+        return $this->connection->select($this->table, $columns, $where);
     }
 
     # Update records
     public function update(array $data, array $where): int
     {
-        return 1;
+        $result = $this->connection->update($this->table, $data, $where);
+        return $result->rowCount();
     }
 
     # Delete
     public function delete(array $where): int
     {
-        return 1;
+        $result = $this->connection->delete($this->table, $where);
+        return $result->rowCount();
+    }
+
+    # Count
+    public function count(array $where): int
+    {
+        return $this->connection->count($this->table, $where);
+    }
+
+    # Sum
+    public function sum($column, array $where): int
+    {
+        return $this->connection->sum($this->table, $column, $where);
     }
 }
