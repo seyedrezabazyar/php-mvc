@@ -28,17 +28,30 @@ class JsonBaseModel extends BaseModel
     # Create (insert)
     public function create(array $new_data): int
     {
-        $table_data = $this->read_table($new_data);
+        $table_data = $this->read_table();
         $table_data[] = $new_data;
         $this->write_table($table_data);
-        return 1;
+        return $new_data[$this->primaryKey];
     }
 
     # Read (select) single | multiple
     public function find($id): object
     {
-        return (object)[];
+        $table_data = $this->read_table();
+        foreach ($table_data as $row) {
+            if ($row->{$this->primaryKey} == $id) {
+                return $row;
+            }
+        }
+
+        return (object)null;
     }
+
+    public function getAll(): array
+    {
+        return $this->read_table();
+    }
+
     public function get(array $columns, array $where): array
     {
         return [];
