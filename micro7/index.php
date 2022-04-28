@@ -3,21 +3,28 @@
 <?php
 # front controller
 
-use App\Models\Product;
 use App\Models\User;
 
 include 'bootstrap/init.php';
 
-// $user_data = [
-//     'id' => rand(5, 1000),
-//     'name' => 'mohammad'
-// ];
+$user_data = [
+    'name' => 'Ali',
+    'email' => 'ali@gmail.com',
+    'password' => '123456'
+];
 
-// $user_model = new User();
-// $user_model->create($user_data);
-// $user = $user_model->find(2);
+$user_model = new User();
+$result = $user_model->create($user_data);
 // $user = $user_model->getAll();
-// var_dump($user);
+// var_dump($result);
+
+for ($i = 1; $i <= 20; $i++) {
+    $user_model->create([
+        'name' => "User-$i",
+        'email' => "user-$i@gmail.com",
+        'password' => "Pass-$i"
+    ]);
+}
 
 // $productModel = new Product();
 // for ($i = 1; $i <= 20; $i++) {
@@ -27,8 +34,6 @@ include 'bootstrap/init.php';
 //     ]);
 // }
 // var_dump($productModel->getAll());
-
-// var_dump($_ENV['DB_NAME']);
 
 // $router = new App\Core\Routing\Router();
 // $router->run();
