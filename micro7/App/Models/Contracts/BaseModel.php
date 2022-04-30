@@ -15,11 +15,21 @@ abstract class BaseModel implements CrudInterface
     //     # if mysql => set mysql connection
     // }
 
-    protected function getAttribute($key)
+    public function getAttribute($key)
     {
         if (!$key || !array_key_exists($key, $this->attributes)) {
             return null;
         }
         return $this->attributes[$key];
+    }
+
+    public function getAttributes()
+    {
+        return $this->attributes;
+    }
+
+    public function __get($key)
+    {
+        return  $this->getattribute($key);
     }
 }
