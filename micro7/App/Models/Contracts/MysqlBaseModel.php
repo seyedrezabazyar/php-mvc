@@ -51,6 +51,19 @@ class MysqlBaseModel extends BaseModel
         }
     }
 
+    public function  remove(): int
+    {
+        $record_id = $this->{$this->primaryKey};
+        return $this->delete([$this->primaryKey => $record_id]);
+    }
+
+    public function  save()
+    {
+        $record_id = $this->{$this->primaryKey};
+        $this->update($this->attributes, [$this->primaryKey => $record_id]);
+        return $this->find($record_id);
+    }
+
     # Create (insert)
     public function create(array $data): int
     {
@@ -62,6 +75,8 @@ class MysqlBaseModel extends BaseModel
     public function find($id): object
     {
         $record = $this->connection->get($this->table, '*', [$this->primaryKey => $id]);
+        if (is_null($record))
+            return new \stdClass();
         foreach ($record as $col => $val)
             $this->attributes[$col] = $val;
         return $this;
