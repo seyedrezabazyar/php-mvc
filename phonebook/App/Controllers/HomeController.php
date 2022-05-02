@@ -15,8 +15,27 @@ class HomeController
 
     public function index()
     {
-        $allContacts = $this->contactModel->getAll();
-        var_dump($allContacts);
-        echo "Hi From HomeController of homebook";
+
+        $data = [
+            'contacts' => $this->contactModel->getAll()
+        ];
+        view('home.index', $data);
     }
 }
+
+// $faker = new \Faker\Generator();
+        // $faker->addProvider(new \Faker\Provider\fa_IR\Person($faker));
+        
+        // $faker = \Faker\Factory::create();
+
+        // echo $faker->name() . '<br>';
+        // echo $faker->email() . '<br>';
+        // echo $faker->phoneNumber() . '<br>';
+
+        // for ($i = 0; $i < 1000; $i++) {
+        //     $this->contactModel->create([
+        //         'name' => $faker->name(),
+        //         'mobile' => $faker->phoneNumber(),
+        //         'email' => $faker->email()
+        //     ]);
+        // }
