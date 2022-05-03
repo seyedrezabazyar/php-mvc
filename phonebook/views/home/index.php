@@ -31,7 +31,7 @@
                 <input onkeyup="searchFunction()" id="myInput" class="form-control mt-2" placeholder="search">
                 <span class="icon text-primary"><i class="fas fa-search"></i></span>
 
-                <h5 class="mt-2">Add New Contact</h5>
+                <h5 class="mt-5">Add New Contact</h5>
 
                 <input onblur="validateName()" class="form-control mb-3 mt-3" placeholder="add name" id="userName">
                 <div id="nameAlert" class="alert alert-danger text-justify p-2 ">Please add name</div>
@@ -51,6 +51,7 @@
                 <table id="myTable" class="table text-justify table-striped">
 
                     <thead class="tableh1">
+                        <th class="">ID</th>
                         <th class="">Name</th>
                         <th class="">Phone</th>
                         <th class="">E-mail</th>
@@ -61,6 +62,7 @@
 
                         <?php foreach ($contacts as $contact) : ?>
                             <tr class="tableh1">
+                                <td class=""><?= $contact['id'] ?></td>
                                 <td class=""><?= $contact['name'] ?></td>
                                 <td class=""><?= $contact['mobile'] ?></td>
                                 <td class=""><?= $contact['email'] ?></td>
