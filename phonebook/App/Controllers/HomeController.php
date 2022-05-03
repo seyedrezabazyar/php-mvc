@@ -15,9 +15,10 @@ class HomeController
 
     public function index()
     {
-
         $data = [
-            'contacts' => $this->contactModel->getAll()
+            'contacts' => $this->contactModel->getAll(),
+            'pageSize' => $this->contactModel->pageSize,
+            'countAll' => $this->contactModel->getCountAllData()
         ];
         view('home.index', $data);
     }

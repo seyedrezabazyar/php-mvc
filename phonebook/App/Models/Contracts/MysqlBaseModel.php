@@ -89,12 +89,15 @@ class MysqlBaseModel extends BaseModel
 
     public function get($columns, array $where): array
     {
-        $page = isset($_GET['page']) && is_numeric($_GET['page']) ? $_GET['page'] : 1;
+        $page = (isset($_GET['page']) && is_numeric($_GET['page'])) ? $_GET['page'] : 1;
         $start = ($page - 1) * $this->pageSize;
         $where['LIMIT'] = [$start, $this->pageSize];
         return $this->connection->select($this->table, $columns, $where);
     }
-
+    public function getCountAllData()
+    {
+        return $this->connection->count($this->table);
+    }
     # Update records
     public function update(array $data, array $where): int
     {
