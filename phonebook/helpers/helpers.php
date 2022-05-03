@@ -18,6 +18,11 @@ function view($path, $data = [])
     include_once $view_full_path;
 }
 
+function xss_clean($str)
+{
+    return filter_var(htmlspecialchars($str));
+}
+
 function strCountains($str, $needle, $case_sensitive = 0)
 {
     if ($case_sensitive)
