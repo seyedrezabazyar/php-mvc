@@ -1,6 +1,6 @@
 <?php
 
-function site_url($route)
+function site_url($route = '')
 {
     return $_ENV['HOST'] . $route;
 }
@@ -16,6 +16,12 @@ function view($path, $data = [])
     $path = str_replace('.', '/', $path);
     $view_full_path = BASEPATH . "views/$path.php";
     include_once $view_full_path;
+}
+
+function view_die($path, $data = [])
+{
+    view($path, $data);
+    die();
 }
 
 function xss_clean($str)
