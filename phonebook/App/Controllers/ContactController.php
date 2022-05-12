@@ -41,4 +41,12 @@ class ContactController
 
         view('contact.add-result', $data);
     }
+
+    public function delete()
+    {
+        global $request;
+        $id = $request->get_route_param('id');
+        $data['deleted_count'] = $this->contactModel->delete(['id' => $id]);
+        view('contact.delete-result', $data);
+    }
 }

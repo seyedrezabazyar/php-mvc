@@ -5,6 +5,7 @@ use App\Core\Routing\Route;
 Route::get('/', 'HomeController@index');
 
 Route::post('/contact/add', 'ContactController@add');
+Route::get('/contact/delete/{id}', 'ContactController@delete');
 
 // Route::get('/panel', 'PanelController@index', [Author::Class]);
 // Route::get('/', 'HomeController@index');
